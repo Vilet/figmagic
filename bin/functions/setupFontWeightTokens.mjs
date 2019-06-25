@@ -1,6 +1,13 @@
 import { camelize } from './camelize.mjs';
 import { formatName } from './formatName.mjs';
 
+/**
+ *
+ *
+ * @export
+ * @param {*} frame
+ * @returns
+ */
 export function setupFontWeightTokens(frame) {
 	if (frame) {
 		let fontWeightObject = {};

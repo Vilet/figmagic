@@ -2,6 +2,13 @@ import { camelize } from './camelize.mjs';
 import { formatName } from './formatName.mjs';
 import { normalizeUnits } from './normalizeUnits.mjs';
 
+/**
+ *
+ *
+ * @export
+ * @param {*} spacingFrame
+ * @returns
+ */
 export function setupSpacingTokens(spacingFrame) {
 	if (spacingFrame) {
 		const spacings = spacingFrame.children;

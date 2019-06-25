@@ -1,16 +1,36 @@
 import fs from 'fs';
 import { createFolder } from './createFolder.mjs';
 
-export function writeFile(file, path, name, isToken = false, format) {
+/**
+ *
+ *
+ * @export
+ * @param {*} file
+ * @param {*} path
+ * @param {*} name
+ * @param {boolean} [isToken=false]
+ * @param {*} format
+ */
+export async function writeFile(file, path, name, isToken = false, format) {
 	if (file && path && name) {
 		createFolder(path);
-		write(file, path, name, isToken, format);
+		await write(file, path, name, isToken, format);
 	} else {
 		throw new Error('Missing required parameters to correctly run writeFile()!');
 	}
 }
 
-function write(file, path, name, isToken, format) {
+/**
+ *
+ *
+ * @param {*} file
+ * @param {*} path
+ * @param {*} name
+ * @param {*} isToken
+ * @param {*} format
+ * @returns
+ */
+async function write(file, path, name, isToken, format) {
 	let fileContent = file;
 	let filePath = `${path}/${name}`;
 
@@ -19,9 +39,12 @@ function write(file, path, name, isToken, format) {
 		filePath += `.${format}`;
 	}
 
-	fs.writeFile(filePath, fileContent, 'utf-8', function(error) {
-		if (error) {
-			throw new Error('Error in write() > writeFile(): ', error);
-		}
+	return new Promise(function(resolve, reject) {
+		fs.writeFile(filePath, fileContent, 'utf-8', function(error) {
+			if (error) {
+				reject('Error in write() > writeFile(): ', error);
+				throw new Error('Error in write() > writeFile(): ', error);
+			} else resolve(fileContent);
+		});
 	});
 }

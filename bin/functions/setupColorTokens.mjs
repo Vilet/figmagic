@@ -1,6 +1,13 @@
 import { camelize } from './camelize.mjs';
 import { formatName } from './formatName.mjs';
 
+/**
+ *
+ *
+ * @export
+ * @param {*} colorFrame
+ * @returns
+ */
 export function setupColorTokens(colorFrame) {
 	if (colorFrame) {
 		let colors = {};

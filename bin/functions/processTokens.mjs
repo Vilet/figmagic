@@ -5,6 +5,14 @@ import { setupFontSizeTokens } from './setupFontSizeTokens.mjs';
 import { setupFontWeightTokens } from './setupFontWeightTokens.mjs';
 import { setupLineHeightTokens } from './setupLineHeightTokens.mjs';
 
+/**
+ *
+ *
+ * @export
+ * @param {*} sheet
+ * @param {*} name
+ * @returns
+ */
 export function processTokens(sheet, name) {
 	if (sheet && name) {
 		const _name = name.toLowerCase();

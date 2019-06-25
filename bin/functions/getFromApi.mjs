@@ -1,6 +1,12 @@
 import { writeFile } from './writeFile.mjs';
 import fetch from 'node-fetch';
 
+/**
+ *
+ *
+ * @export
+ * @returns
+ */
 export async function getFromApi() {
 	let data = {};
 
@@ -14,7 +20,7 @@ export async function getFromApi() {
 		.then(res => res.json())
 		.then(json => {
 			data = json;
-			writeFile(JSON.stringify(json), 'figma', 'figma.json');
+			writeFile(JSON.stringify(json), 'figma', 'figma.json', false, 'json');
 		});
 
 	return data;

@@ -4,6 +4,13 @@
 
 import units from '../meta/units.mjs';
 
+/**
+ *
+ *
+ * @export
+ * @param {*} typographyFrame
+ * @returns
+ */
 export function setupTypographyTokens(typographyFrame) {
 	if (typographyFrame) {
 		let typeTestObject = {};

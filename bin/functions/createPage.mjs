@@ -2,40 +2,35 @@
 // import figmaDocument from './figma/figma.json';
 // figmaDocument.document.children
 
-export function createPage(figmaPages) {
-	let hasCreatedDesignTokensPage = false;
-
-	if (figmaPages && figmaPages.length > 0) {
-		let correctPage = undefined;
-		let isMatchFound = false;
-
-		figmaPages.forEach(page => {
-			if (!isMatchFound) {
-				if (
-					findShortenedNameMatch(page.name, 'designtokens') &&
-					hasCreatedDesignTokensPage === false
-				) {
-					isMatchFound = true;
-					foundMatch(page);
-				}
-			}
-
-			function foundMatch(page) {
-				const fixedPageName = page.name.toLowerCase().replace(' ', '');
-
-				if (fixedPageName === 'designtokens') {
-					hasCreatedDesignTokensPage = true;
-					correctPage = page;
-				}
-			}
+/**
+ *
+ *
+ * @export
+ * @param {*} figmaPages
+ * @param {*} shortenedName
+ * @returns
+ */
+export async function createPage(figmaPages, shortenedName) {
+	if (shortenedName && figmaPages && figmaPages.length > 0) {
+		return new Promise((resolve, reject) => {
+			const PAGE = figmaPages.filter(page => findShortenedNameMatch(page.name, shortenedName));
+			if (PAGE === undefined || PAGE === null) {
+				reject('Error in createPage!');
+			} else resolve(PAGE[0]);
 		});
-
-		return correctPage;
 	} else {
-		throw new Error('No pages provided to createPage()!');
+		throw new Error('Missing either pages or shortened page name in createPage()!');
 	}
 }
 
+/**
+ *
+ *
+ * @export
+ * @param {*} originalString
+ * @param {*} matchString
+ * @returns
+ */
 export function findShortenedNameMatch(originalString, matchString) {
 	if (originalString) {
 		if (matchString) {

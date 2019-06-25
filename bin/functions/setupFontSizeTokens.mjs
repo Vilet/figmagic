@@ -2,6 +2,13 @@ import { units } from '../meta/units.mjs';
 import { camelize } from './camelize.mjs';
 import { formatName } from './formatName.mjs';
 
+/**
+ *
+ *
+ * @export
+ * @param {*} frame
+ * @returns
+ */
 export function setupFontSizeTokens(frame) {
 	if (frame) {
 		let fontSizeObject = {};

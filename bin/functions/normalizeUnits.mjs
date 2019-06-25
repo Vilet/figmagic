@@ -1,5 +1,14 @@
 import { units } from '../meta/units.mjs';
 
+/**
+ *
+ *
+ * @export
+ * @param {*} value
+ * @param {*} currentUnit
+ * @param {*} newUnit
+ * @returns
+ */
 export function normalizeUnits(value, currentUnit, newUnit) {
 	if (value && currentUnit && newUnit) {
 		let rootSize = undefined;
